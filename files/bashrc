@@ -1,9 +1,4 @@
-# .bashrc / .bash_aliases
-
-# Source global definitions
-# if [ -f /etc/bashrc ]; then
-#	. /etc/bashrc
-# fi
+# --------------------------- Custom Bashrc Commands ----------------------------------
 
 #------------------------------------------------------------
 # General Shell / Command line settings.
@@ -13,6 +8,7 @@ HISTSIZE=1000                            # in memory history number of lines
 HISTFILESIZE=10000                       # in file history number of lines
 HISTCONTROL=ignorespace:ignoredups       # no duplicate entries
 shopt -s histappend                      # append to history, don't overwrite it
+shopt -s checkwinsize					 # check window size after each command
 stty -ixon
 
 #------------------------------------------------------------
@@ -20,14 +16,22 @@ stty -ixon
 #------------------------------------------------------------
 alias vi=vim
 alias rm='rm -i'
-alias ls='ls -G'
-alias ll='ls -GFl'
-alias ll.='ls -GFdl .*'
-alias l.='ls -GFd .*'
-alias la='ls -Ga'
-alias lla='ls -Gla'
+alias cp='cp -i'
+alias mv='mv -i'
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+	test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+	alias ls='ls --color=auto'
+	alias grep='grep --color=auto'
+	alias fgrep='fgrep --color=auto'
+	alias egrep='egrep --color=auto'
+fi
+alias ll='ls -Fl'
+alias ll.='ls -Fdl .*'
+alias l.='ls -Fd .*'
+alias la='ls -a'
+alias lla='ls -la'
 
-alias grep='grep --color=auto'
 alias path='echo $PATH'
 
 #------------------------------------------------------------
