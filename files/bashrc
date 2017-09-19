@@ -285,3 +285,12 @@ _tmux()
 complete -F _tmux tmux
 # END tmux completion
 
+# --------------------- Print messages for the user ------------------------
+echo ""
+echo "# -----------------------------------------------------------------------"
+echo "#             WELCOME TO RAVI'S DOCKER CONTAINER : ${DOCKER_VM}"
+echo "#             CREATED ON : ${DOCKER_VM_BUILD_TIME}"
+echo "#"
+echo "# -----------------------------------------------------------------------"
+echo ""
+

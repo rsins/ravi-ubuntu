@@ -15,7 +15,9 @@ COPY ${SOURCE_FILES}/tmux.conf ${HOME}/.tmux.conf
 COPY ${SOURCE_FILES}/vimrc ${HOME}/.vimrc
 COPY ${SOURCE_FILES}/inputrc ${HOME}/.inputrc
 COPY ${SOURCE_FILES}/bashrc ${HOME}/bashrc
-RUN printf "export DOCKER_VM=docker-ubuntu" >> ${HOME}/bashrc
+RUN printf "\n# ----------- Docker Build Information ----------------\n" >> ${HOME}/.bashrc
+RUN printf "export DOCKER_VM=docker-ubuntu\n" >> ${HOME}/.bashrc
+RUN printf "export DOCKER_VM_BUILD_TIME=`date '+%Y-%b-%d %r %Z'`\n" >> ${HOME}/.bashrc
 RUN cat ${HOME}/bashrc >> ${HOME}/.bashrc
 RUN rm -f ${HOME}/bashrc
 
